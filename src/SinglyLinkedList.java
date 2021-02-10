@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class SinglyLinkedList {
     private ListNode head;
     private static class ListNode{
@@ -30,6 +32,33 @@ public class SinglyLinkedList {
         return count;
 
     }
+    public void insertFirst(int value){
+        ListNode newNode = new ListNode(value);
+        newNode.next=head;
+        head=newNode;
+    }
+    public void insertLast(int value){
+        ListNode newNode=new ListNode(value);
+        if (head==null){
+            head=newNode;
+            return;
+        }
+        ListNode current=head;
+        while(current.next!=null){
+            current=current.next;
+
+        }
+        current.next=newNode;
+    }
+    public ListNode deleteFirst(){
+        if(head==null){
+            return null;
+        }
+        ListNode temp=head;
+        head=head.next;
+        temp.next=null;
+        return temp;
+    }
 
     public static void main(String[] args) {
         SinglyLinkedList sll=new SinglyLinkedList();
@@ -40,6 +69,9 @@ public class SinglyLinkedList {
         sll.head.next=second;
         second.next=third;
         third.next=fourth;
+        sll.insertFirst(5);
+        sll.insertLast(25);
+        sll.deleteFirst();
         sll.Display();
         System.out.println(sll.Length());
 
