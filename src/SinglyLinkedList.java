@@ -149,33 +149,71 @@ public class SinglyLinkedList {
         }
         return slowPtr;
     }
+    public void removeDublicate(){
+        if(head==null){
+            return ;
+        }
+        ListNode current=head;
+        while(current!=null&&current.next!=null){
+            if(current.data==current.next.data){
+                current.next=current.next.next;
+            }
+            else{
+                current=current.next;
+            }
+        }
+    }
+    public void DeleteNode(int key){
+        ListNode current=head;
+        ListNode temp=null;
+        if(current!=null &&current.data!=key){
+            head=current.next;
+            return;
+
+        }
+        while(current!=null && current.data!=key){
+            temp=current;
+            current=current.next;
+
+
+        }
+        if(current==null){
+            return;
+        }
+        temp.next=current.next;
+
+    }
     public static void main(String[] args) {
         SinglyLinkedList sll=new SinglyLinkedList();
         sll.head=new ListNode(10);
         ListNode second=new ListNode(1);
-        ListNode third =new ListNode(8);
+        ListNode third =new ListNode(1);
         ListNode fourth =new ListNode(11);
         sll.head.next=second;
         second.next=third;
         third.next=fourth;
         sll.insertFirst(5);
         sll.insertLast(25);
-        sll.deleteFirst();
+//        sll.deleteFirst();
+//        sll.Display();
+//        sll.deleteLast();
         sll.Display();
-        sll.deleteLast();
+        sll.removeDublicate();
         sll.Display();
         sll.insertPosition(3,20);
+        sll.DeleteNode(11);
         sll.Display();
-        System.out.println(sll.Length());
-        boolean f=sll.find(11);
-        if(f){
-            System.out.println("Search key find!!!");
-        }
-        else{
-            System.out.println("Search key Not Find!!!");
-        }
-        System.out.println(sll.reverse().data);
-        System.out.println(sll.getMiddleNode().data);
+//        System.out.println(sll.Length());
+//        boolean f=sll.find(11);
+//        if(f){
+//            System.out.println("Search key find!!!");
+//        }
+//        else{
+//            System.out.println("Search key Not Find!!!");
+//        }
+//        System.out.println(sll.reverse().data);
+//        System.out.println(sll.getMiddleNode().data);
+
 
 
     }
