@@ -34,4 +34,12 @@ public class Recursion {
         else
             return fact(n-1)*n;
     }
+
+//    Power of a Number
+    int pow(int m,int n){
+        if(n==0){
+            return 1;
+        }
+        return pow(m,n-1)*m;
+    }
 }
